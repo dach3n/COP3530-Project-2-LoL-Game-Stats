@@ -21,7 +21,7 @@ inline int partition(vector<int*> arr, const int low, const int high) {
     if (*(arr[mid]) < *(arr[high])) {
         swap(arr[mid], arr[high]);
     }
-    int pivot = *(arr[high]);
+    const int pivot = *(arr[high]);
     int up = low, down = high;
 
     while (up < down) {
