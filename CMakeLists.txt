@@ -19,6 +19,11 @@ FetchContent_MakeAvailable(Catch2)
 
 include_directories(src)
 
+add_executable(Main
+        src/main.cpp
+        src/quicksort.h
+        src/heapsort.h)
+
 add_executable(Tests
         test/test.cpp
         src/quicksort.h
@@ -26,3 +31,4 @@ add_executable(Tests
 
 
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain)
+
