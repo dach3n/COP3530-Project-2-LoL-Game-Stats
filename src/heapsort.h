@@ -25,7 +25,7 @@ inline void heapify(vector<int>& arr, int size, int pos) {
     }
 }
 
-inline void heapSort(vector<int>& arr) {
+inline void myHeapSort(vector<int>& arr) {
     const int n = arr.size();
 
     // build heap in-place
