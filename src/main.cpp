@@ -7,18 +7,22 @@
 #include <SFML/Graphics.hpp>
 #include "quicksort.h"
 #include "heapsort.h"
+#include <chrono>
 
 
 int main() {
     // TODO
     // read data from LoL csv
+    LOLGameData gameData;
+    std::string file = "../../data/LOL_gameData_trimmed.csv";
+    gameData.ReadDataFromFile(file);
     // enter user interface loop
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode({800, 600}), "SFML window");
 
     sf::Texture bgTexture;
-    if (!bgTexture.loadFromFile("resources/images/LOL_bg.jpg")) {
+    if (!bgTexture.loadFromFile("../../resources/images/LOL_bg.jpg")) {
         std::cerr << "Error loading file. Check path and file name." << std::endl;
         return EXIT_FAILURE;
     }
@@ -33,7 +37,7 @@ int main() {
     sf::Vector2f scaleFactors(scaleX, scaleY);
     bgSprite.setScale(scaleFactors);
     sf::Font font;
-    if (!font.openFromFile("resources/font.ttf")) {
+    if (!font.openFromFile("../../resources/font.ttf")) {
         std::cerr << "Error loading file. Check path and file name." << std::endl;
         return EXIT_FAILURE;
     }
@@ -46,7 +50,7 @@ int main() {
     sortfocus.setPosition(qpos);
 
     sf::Texture boxTexture;
-    if (!boxTexture.loadFromFile("resources/images/Box.jpg")) {
+    if (!boxTexture.loadFromFile("../../resources/images/Box.jpg")) {
         std::cerr << "Error loading file. Check path and file name." << std::endl;
         return EXIT_FAILURE;
     }
@@ -128,14 +132,54 @@ int main() {
                         if (boxSprite1.getGlobalBounds().contains(mousePos))
                         {
                             std::cout << "Kills box clicked! Sorting by Kills..." << std::endl;
+                            auto start = chrono::high_resolution_clock::now();
+                            vector<LOLGame*> quick = gameData.QuickSortByKills();
+                            auto stop = chrono::high_resolution_clock::now();
+                            auto quicksort_time = chrono::duration_cast<chrono::milliseconds>(stop - start);
+                            cout << "Quick sort: " << quicksort_time.count() << " milliseconds" << endl;
+                            start = chrono::high_resolution_clock::now();
+                            vector<LOLGame*> heap = gameData.HeapSortByKills();
+                            stop = chrono::high_resolution_clock::now();
+                            auto heapsort_time = chrono::duration_cast<chrono::milliseconds>(stop - start);
+                            cout << "Heap sort: " << heapsort_time.count() << " milliseconds" << endl;
+                            int minKills = quick[0]->team0ChampionKills + quick[0]->team1ChampionKills, maxKills = quick[quick.size() - 1]->team0ChampionKills + quick[quick.size() - 1]->team1ChampionKills;
+                            cout << "Minimum kills: " << minKills << " | Maximum kills: " << maxKills << endl;
                         }
                         else if (boxSprite2.getGlobalBounds().contains(mousePos))
                         {
                             std::cout << "Gold box clicked! Sorting by Gold..." << std::endl;
+                            auto start = chrono::high_resolution_clock::now();
+                            vector<LOLGame*> quick = gameData.QuickSortByGold();
+                            auto stop = chrono::high_resolution_clock::now();
+                            auto quicksort_time = chrono::duration_cast<chrono::milliseconds>(stop - start);
+                            cout << "Quick sort: " << quicksort_time.count() << " milliseconds" << endl;
+                            start = chrono::high_resolution_clock::now();
+                            vector<LOLGame*> heap = gameData.HeapSortByGold();
+                            stop = chrono::high_resolution_clock::now();
+                            auto heapsort_time = chrono::duration_cast<chrono::milliseconds>(stop - start);
+                            cout << "Heap sort: " << heapsort_time.count() << " milliseconds" << endl;
+                            int minGold = 0, maxGold = 0;
+                            for (int i = 0; i < 10; i++) {
+                                minGold += quick[0]->players[i]->goldEarned;
+                                maxGold += quick[quick.size() - 1]->players[i]->goldEarned;
+                            }
+                            cout << "Minimum gold: " << minGold << " | Maximum gold: " << maxGold << endl;
                         }
                         else if (boxSprite3.getGlobalBounds().contains(mousePos))
                         {
                             std::cout << "Time box clicked! Sorting by Time..." << std::endl;
+                            auto start = chrono::high_resolution_clock::now();
+                            vector<LOLGame*> quick = gameData.QuickSortByTime();
+                            auto stop = chrono::high_resolution_clock::now();
+                            auto quicksort_time = chrono::duration_cast<chrono::milliseconds>(stop - start);
+                            cout << "Quick sort: " << quicksort_time.count() << " milliseconds" << endl;
+                            start = chrono::high_resolution_clock::now();
+                            vector<LOLGame*> heap = gameData.HeapSortByTime();
+                            stop = chrono::high_resolution_clock::now();
+                            auto heapsort_time = chrono::duration_cast<chrono::milliseconds>(stop - start);
+                            cout << "Heap sort: " << heapsort_time.count() << " milliseconds" << endl;
+                            int minTime = quick[0]->gameDuration, maxTime = quick[quick.size() - 1]->gameDuration;
+                            cout << "Minimum time (s): " << minTime << " | Maximum time (s): " << maxTime << endl;
                         }
                     }
                 }

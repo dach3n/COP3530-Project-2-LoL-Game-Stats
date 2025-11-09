@@ -15,7 +15,7 @@ using namespace std;
 
 TEST_CASE("Read Data", "[LOL game data]") {
     LOLGameData data;
-    string filePath = "../data/LOL_gameData_trimmed.csv";
+    string filePath = "../../data/LOL_gameData_trimmed.csv";
     data.ReadDataFromFile(filePath);
     cout << data.games.size() << endl;
     data.games[0]->PrintGameData();

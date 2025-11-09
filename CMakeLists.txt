@@ -49,7 +49,6 @@ add_executable(Main
         src/LOLGameData.h
         src/LOLGame.cpp
         src/LOLGame.h)
-)
 
 add_executable(Tests
         test/test.cpp
@@ -59,8 +58,6 @@ add_executable(Tests
         src/LOLGameData.h
         src/LOLGame.cpp
         src/LOLGame.h)
-
-)
 
 # =========================================================
 # 5. Link libraries
