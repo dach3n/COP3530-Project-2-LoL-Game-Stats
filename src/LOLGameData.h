@@ -25,7 +25,14 @@ public:
     }
 
     void ReadDataFromFile(string& filePath);
-};
 
+    vector<LOLGame*> QuickSortByKills();
+    vector<LOLGame*> QuickSortByGold();
+    vector<LOLGame*> QuickSortByTime();
+
+    vector<LOLGame*> HeapSortByKills();
+    vector<LOLGame*> HeapSortByGold();
+    vector<LOLGame*> HeapSortByTime();
+};
 
 #endif //COP3530_PROJECT_2_LOL_GAME_STATS_LOLGAMEDATA_H
