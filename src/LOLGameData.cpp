@@ -9,5 +9,10 @@ void LOLGameData::ReadDataFromFile() {
     std::string line;
     std::getline(file, line); // skip header
 
-
+    while (std::getline(file, line)) {
+        std::istringstream stream(line);
+        auto game = new LOLGame;
+        game->ReadGameDataFromFile(stream);
+        games.push_back(game);
+    }
 }
