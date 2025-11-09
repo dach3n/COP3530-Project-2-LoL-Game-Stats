@@ -19,17 +19,17 @@ project(freetype-populate NONE)
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
 set(GIT_EXECUTABLE [==[C:/Program Files/Git/cmd/git.exe]==])
-set(GIT_VERSION_STRING [==[2.47.1.windows.1]==])
+set(GIT_VERSION_STRING [==[2.47.0.windows.2]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[C:/Program Files/Git/cmd/git.exe;2.47.1.windows.1]==]
+  [==[C:/Program Files/Git/cmd/git.exe;2.47.0.windows.2]==]
 )
 
 
 include(ExternalProject)
 ExternalProject_Add(freetype-populate
-                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/freetype/freetype.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "VER-2-13-2" "GIT_SHALLOW" "ON" "PATCH_COMMAND" "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/cmake/win/x64/bin/cmake.exe" "-DFREETYPE_DIR=C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-src" "-P" "C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/sfml-src/tools/freetype/PatchFreetype.cmake"
-                    SOURCE_DIR          "C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-src"
-                    BINARY_DIR          "C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-build"
+                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/freetype/freetype.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "VER-2-13-2" "GIT_SHALLOW" "ON" "PATCH_COMMAND" "C:/Program Files/JetBrains/CLion/CLion 2024.3.1.1/bin/cmake/win/x64/bin/cmake.exe" "-DFREETYPE_DIR=C:/Users/lrpau/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-src" "-P" "C:/Users/lrpau/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/sfml-src/tools/freetype/PatchFreetype.cmake"
+                    SOURCE_DIR          "C:/Users/lrpau/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-src"
+                    BINARY_DIR          "C:/Users/lrpau/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

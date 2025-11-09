@@ -45,6 +45,7 @@ add_executable(Main
         src/main.cpp
         src/quicksort.h
         src/heapsort.h
+        src/importCSV.h
 )
 
 add_executable(Tests

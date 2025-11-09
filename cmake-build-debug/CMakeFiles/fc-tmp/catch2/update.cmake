@@ -4,6 +4,6 @@ message(VERBOSE "Executing update step for catch2")
 
 block(SCOPE_FOR VARIABLES)
 
-include("C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/CMakeFiles/fc-tmp/catch2/catch2-gitupdate.cmake")
+include("C:/Users/lrpau/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/CMakeFiles/fc-tmp/catch2/catch2-gitupdate.cmake")
 
 endblock()
