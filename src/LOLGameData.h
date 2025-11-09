@@ -22,7 +22,7 @@ public:
 
     //functions
     LOLGameData();
-    void ReadDataFromFile();
+    void ReadDataFromFile(string& filePath);
 };
 
 
