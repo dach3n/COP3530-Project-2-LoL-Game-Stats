@@ -10,13 +10,13 @@
 using namespace std;
 
 template <class Compare>
-void LOLHeapSort(vector<LOLGame*> data, Compare comp);
+void LOLHeapSort(vector<LOLGame*>& data, Compare comp);
 
 template <class Compare>
-void LOLheapify(vector<LOLGame*> arr, int size, int pos, Compare comp);
+void LOLheapify(vector<LOLGame*>& arr, int size, int pos, Compare comp);
 
 template<class Compare>
-void LOLHeapSort(vector<LOLGame *> arr, Compare comp) {
+void LOLHeapSort(vector<LOLGame *>& arr, Compare comp) {
     const int n = arr.size();
 
     // build heap in-place
@@ -32,15 +32,15 @@ void LOLHeapSort(vector<LOLGame *> arr, Compare comp) {
 }
 
 template<class Compare>
-void LOLheapify(vector<LOLGame *> arr, int size, int pos, Compare comp) {
+void LOLheapify(vector<LOLGame *>& arr, int size, int pos, Compare comp) {
     int max_pos = pos;
     const int left = 2 * pos + 1;
     const int right = 2 * pos + 2;
 
-    if (left < size && arr[left] > arr[max_pos]) {
+    if (left < size && !comp(arr[left], arr[max_pos])) {
         max_pos = left;
     }
-    if (right < size && arr[right] > arr[max_pos]) {
+    if (right < size && !comp(arr[right], arr[max_pos])) {
         max_pos = right;
     }
     if (max_pos != pos) {
