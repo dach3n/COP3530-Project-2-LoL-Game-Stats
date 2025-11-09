@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "LOLGame.h"
+#include <fstream>
 #include "quicksort.h"
 #include "heapsort.h"
 
@@ -21,7 +22,7 @@ public:
 
     //functions
     LOLGameData();
-    void ReadDataFromFile(stringstream& stream);
+    void ReadDataFromFile();
 };
 
 
