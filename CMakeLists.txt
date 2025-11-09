@@ -20,12 +20,18 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 # =========================================================
-# 2. Find SFML installed locally
+# 2. Fetch SFML for graphic output
 # =========================================================
-# Point this to your SFML directory — adjust if needed
-set(SFML_DIR "C:/SFML-2.5.1/lib/cmake/SFML")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
+include(FetchContent)
+FetchContent_Declare(SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG 3.0.2
+        GIT_SHALLOW ON
+        EXCLUDE_FROM_ALL
+        SYSTEM)
+FetchContent_MakeAvailable(SFML)
 
 # =========================================================
 # 3. Include source directories
@@ -51,4 +57,5 @@ add_executable(Tests
 # 5. Link libraries
 # =========================================================
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain)
-target_link_libraries(Main PRIVATE sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
+target_compile_features(Main PRIVATE cxx_std_17)
+target_link_libraries(Main PRIVATE SFML::Graphics)
