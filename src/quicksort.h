@@ -8,7 +8,56 @@
 #include <cmath>
 #include <vector>
 #include <random>
+#include "LOLGameData.h"
 using namespace std;
+
+template <class Compare>
+void LOLQuickSort(vector<LOLGame*> arr, const int low, const int high, Compare comp);
+
+
+
+template <class Compare>
+int LOLpartition(vector<LOLGame*> arr, const int low, const int high, Compare comp);
+
+template<class Compare>
+void LOLQuickSort(vector<LOLGame *> arr, const int low, const int high, Compare comp) {
+    if (low < high) {
+        const int pivot = LOLpartition(arr, low, high, comp);
+        LOLQuickSort(arr, low, pivot - 1, comp);
+        LOLQuickSort(arr, pivot+1, high, comp);
+    }
+}
+
+template<class Compare>
+int LOLpartition(vector<LOLGame *> arr, const int low, const int high, Compare comp) {
+    // Choose pivot randomly
+    srand(time(nullptr));
+    const int random = low + rand() % (high - low);
+    swap(arr[random], arr[low]);
+    const auto pivot = arr[low];
+    int up = low, down = high;
+
+    while (up < down) {
+        for (int i = up; i < high; i++) {
+            if (arr[up] > pivot) {
+                break;
+            }
+            up++;
+        }
+        for (int i = high; i > low; i--) {
+            if (arr[down] < pivot) {
+                break;
+            }
+            down--;
+        }
+        if (up < down) {
+            swap(arr[up], arr[down]);
+        }
+    }
+    swap(arr[low], arr[down]);
+    return down;
+}
+
 
 inline int partition(vector<int>& arr, const int low, const int high) {
     // Choose pivot
