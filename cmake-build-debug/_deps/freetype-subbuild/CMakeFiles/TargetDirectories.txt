@@ -1,0 +1,3 @@
+C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-subbuild/CMakeFiles/freetype-populate.dir
+C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-subbuild/CMakeFiles/edit_cache.dir
+C:/Users/rjant/CLionProjects/COP3530-Project-2-LoL-Game-Stats/cmake-build-debug/_deps/freetype-subbuild/CMakeFiles/rebuild_cache.dir
