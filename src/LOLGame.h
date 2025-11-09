@@ -15,7 +15,7 @@ using namespace std;
 
 class LOLGame {
     public:
-    struct player {
+    struct Player {
         int assists;
         int championLevel;
         string championName;
@@ -27,13 +27,15 @@ class LOLGame {
         int summonerLevel;
         int totalDamageDealtToChampions;
 
-        player(const int a, const int cl, string cn, const int d, const int ge, const int gs, const int ip, const int k, const int sl, const int tddc) :
+        Player(const int a, const int cl, string cn, const int d, const int ge, const int gs, const int ip, const int k, const int sl, const int tddc) :
             assists(a), championLevel(cl), championName(std::move(cn)), deaths(d), goldEarned(ge), goldSpent(gs), itemsPurchased(ip), kills(k), summonerLevel(sl), totalDamageDealtToChampions(tddc) {}
+
+        void PrintPlayer();
     };
 
     int gameDuration;
     int gameID;
-    vector<player*> players;
+    vector<Player*> players;
     bool team0Win;
     int team0BaronKills;
     int team0ChampionKills;
@@ -50,6 +52,8 @@ class LOLGame {
     // functions
     LOLGame();
     void ReadGameDataFromFile(istringstream& stream);
+
+    void PrintGameData();
 };
 
 
