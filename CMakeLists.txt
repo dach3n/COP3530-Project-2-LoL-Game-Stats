@@ -45,12 +45,21 @@ add_executable(Main
         src/main.cpp
         src/quicksort.h
         src/heapsort.h
+        src/LOLGameData.cpp
+        src/LOLGameData.h
+        src/LOLGame.cpp
+        src/LOLGame.h)
 )
 
 add_executable(Tests
         test/test.cpp
         src/quicksort.h
         src/heapsort.h
+        src/LOLGameData.cpp
+        src/LOLGameData.h
+        src/LOLGame.cpp
+        src/LOLGame.h)
+
 )
 
 # =========================================================
