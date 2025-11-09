@@ -1,0 +1,15 @@
+# libvorbis pkg-config source file
+
+prefix=C:/Program Files (x86)/COP3530_Project_2_LoL_Game_Stats
+exec_prefix=C:/Program Files (x86)/COP3530_Project_2_LoL_Game_Stats/bin
+libdir=C:/Program Files (x86)/COP3530_Project_2_LoL_Game_Stats/lib
+includedir=C:/Program Files (x86)/COP3530_Project_2_LoL_Game_Stats/include
+
+Name: vorbis
+Description: vorbis is the primary Ogg Vorbis library
+Version: 1.3.7
+Requires.private: ogg
+Conflicts:
+Libs: -L${libdir} -lvorbis 
+Libs.private: 
+Cflags: -I${includedir}
