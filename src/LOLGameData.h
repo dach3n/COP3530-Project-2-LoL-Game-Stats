@@ -21,7 +21,9 @@ public:
     vector<LOLGame*> games;
 
     //functions
-    LOLGameData();
+    LOLGameData() {
+    }
+
     void ReadDataFromFile(string& filePath);
 };
 

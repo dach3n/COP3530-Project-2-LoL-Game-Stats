@@ -5,14 +5,21 @@
 #include "LOLGameData.h"
 
 void LOLGameData::ReadDataFromFile(string& filePath) {
-    std::ifstream file(filePath); // Open game data
-    std::string line;
-    std::getline(file, line); // skip header
+    ifstream file(filePath); // Open game data
+    if (file.is_open()) {
+        string line;
+        getline(file, line); // skip header
 
-    while (std::getline(file, line)) {
-        std::istringstream stream(line);
-        auto game = new LOLGame;
-        game->ReadGameDataFromFile(stream);
-        games.push_back(game);
+        while (getline(file, line)) {
+            istringstream stream(line);
+            auto game = new LOLGame;
+            game->ReadGameDataFromFile(stream);
+            games.push_back(game);
+        }
     }
+    else {
+        cout << "File could not be opened" << endl;
+    }
+
+
 }
